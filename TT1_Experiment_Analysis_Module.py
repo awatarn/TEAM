@@ -1,6 +1,7 @@
 # TT1_Experiment_Analysis
 # Created by Apiwat Wisitsorasak on 29 Sep 2023
 # - Update many part: PrintSummary, Compute Bt, NeMax, IpMax [1 Oct 2023]
+# - Update the ploting function, add `color` as a parameter [5 Oct 2023]
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -237,20 +238,21 @@ class TT1Discharge:
 
 
 
-
+# ------------------------------- VISUALIZATION ---------------------------------------
 
 def PlotSingleColumn(shots, var, **kwargs):
     # Plot experimental results of TT-1 discharge
-    # - Add interpolation, PrintSummary, Unit [1 Oct 2023]    
+    # - Add interpolation, PrintSummary, Unit [1 Oct 2023]   
+    # - Defining `color` as an additional parameter of the funciton [5 Oct 2023]
 
     
     # default keyword arguments
-    defaultKwargs = {'lw':1, 'color':'k', 'tinit':0, 'tfinal':1000,
+    defaultKwargs = {'lw':1, 'tinit':0, 'tfinal':1000,
                      'grid':True, 'width':8, 'height':1.2, 'savefig':False,
                      'unit':True, 'Interpolation':False, 'InterpolationPeriod':1,
-                     'ShowSummary':True}
+                     'ShowSummary':True, 'color':['k', 'r', 'g', 'b', 'c', 'm', 'y']}
     kwargs = { **defaultKwargs, **kwargs }
-    color=['r', 'g', 'b', 'c', 'm', 'y', 'k', 'r', 'g', 'b', 'c', 'm', 'y', 'k']
+    color = kwargs['color']
 
     if type(shots) != list:
         # if the input is not a list, convert it to a list
